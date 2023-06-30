@@ -17,3 +17,5 @@ node {
 //         pollSCM('H/2 * * * *')
 //     ])
 // ])
+
+// test update pollSCM
