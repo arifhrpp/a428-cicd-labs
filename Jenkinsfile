@@ -1,15 +1,19 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:16-buster-slim' 
-            args '-p 3000:3000' 
+node {
+    stage('Build') {
+        docker.image('node:16-buster-slim').withRun('-p 3200:3200') {
+            sh 'npm install'
         }
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'npm install' 
-            }
+    stage('Test') {
+        docker.image('node:16-buster-slim').withRun('-p 3200:3200') {
+            sh './jenkins/scripts/test.sh'
         }
     }
 }
+
+// Poll SCM every 2 minutes
+properties([
+    pipelineTriggers([
+        pollSCM('H/2 * * * *')
+    ])
+])
