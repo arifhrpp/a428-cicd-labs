@@ -11,9 +11,9 @@ node {
     }
 }
 
-// Poll SCM every 2 minutes
-properties([
-    pipelineTriggers([
-        pollSCM('H/2 * * * *')
-    ])
-])
+// // Poll SCM every 2 minutes
+// properties([
+//     pipelineTriggers([
+//         pollSCM('H/2 * * * *')
+//     ])
+// ])
