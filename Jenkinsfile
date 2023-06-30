@@ -18,4 +18,3 @@ node {
 //     ])
 // ])
 
-// test update pollSCM
