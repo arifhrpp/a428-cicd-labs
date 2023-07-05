@@ -18,4 +18,3 @@ node {
 //     ])
 // ])
 
-// Menerapkan POLL SCM
