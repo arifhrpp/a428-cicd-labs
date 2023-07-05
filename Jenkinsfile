@@ -19,3 +19,5 @@ node {
 // ])
 
 // POLL SCM
+// Anda perlu membuat Jenkins Pipeline baru secara mandiri dengan nama yang sudah kami tentukan, yakni submission-cicd-pipeline-<usernamedicoding>.
+// Jika Anda menerapkan saran ketiga, pastikan berkas Jenkinsfile tersedia di GitHub repository pribadi hasil forking Anda.
