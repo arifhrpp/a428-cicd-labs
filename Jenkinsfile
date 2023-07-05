@@ -18,3 +18,4 @@ node {
 //     ])
 // ])
 
+// log.txt tidak lengkap
