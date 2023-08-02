@@ -1,21 +1,27 @@
-node {
-    stage('Build') {
-        docker.image('node:16-buster-slim').inside('-p 3200:3200') {
-            sh 'npm install'
+pipeline {
+    agent {
+        docker {
+            image 'node:16-buster-slim'
+            args '-p 3000:3000'
         }
     }
-    stage('Test') {
-        docker.image('node:16-buster-slim').inside('-p 3200:3200') {
-            sh './jenkins/scripts/test.sh'
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                sh './jenkins/scripts/deliver.sh' 
+                input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
+                sh './jenkins/scripts/kill.sh' 
+            }
         }
     }
 }
-
-// // Poll SCM every 2 minutes
-// properties([
-//     pipelineTriggers([
-//         pollSCM('H/2 * * * *')
-//     ])
-// ])
-
-// POLL SCM
