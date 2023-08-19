@@ -14,13 +14,11 @@ pipeline {
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
-                input message: 'Lanjutkan ke tahap Deploy?' (Klik "Proceed" untuk melanjutkan)' 
-                sh './jenkins/scripts/kill.sh'
             }
         }
         stage('Deploy') { 
             steps {
-                sh './jenkins/scripts/deliver.sh' 
+                sh './jenkins/scripts/deliver.sh'
                 input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
                 sh './jenkins/scripts/kill.sh'
                 sleep 60
